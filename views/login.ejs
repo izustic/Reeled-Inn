@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="/stylesheets/style3.css">
+</head>
+<body>
+  <div id="header">
+    <div><h1><a href="/">Reeled <span style="color: #fff">Inn</span></a></h1></div>
+  </div>
+  <div class="login-page">
+        <div class="form">
+          <form class="login-form" method="POST" action="/users/login">
+            <div>
+              <% if(locals.error){ %>
+                <% if(error === 'email is not allowed to be empty'){ %>
+
+                <div style="
+                color: #ff0099;
+                margin: 10px 2px;
+                font-size: 0.8em;
+                font-weight: bold;
+                "><%= error%></div>
+               <% } %>
+
+            <% } %>
+              <input type="email" placeholder="email" name="email"/>
+            </div>
+            <div>
+              <% if(locals.error){ %>
+                <% if(error === 'password is not allowed to be empty'){ %>
+
+                <div style="
+                color: #ff0099;
+                margin: 10px 2px;
+                font-size: 0.8em;
+                font-weight: bold;
+                "><%= error%></div>
+
+              <% } else if (locals.error) { %>
+                          
+                <div style="
+                  color: #ff0099;
+                  margin: 10px 2px;
+                  font-size: 0.8em;
+                  font-weight: bold;
+                ">Invalid password</div>
+               <% } %>
+
+            <% } %>
+              <input type="password" placeholder="password" name="password"/>
+            </div>
+            <button>login</button>
+            <p class="message">Not registered? <a href="/register">Create an account</a></p>
+          </form>
+        </div>
+      </div>
+    
+<!-- <script src="javascripts/script.js"></script> -->
+</body>
+</html>

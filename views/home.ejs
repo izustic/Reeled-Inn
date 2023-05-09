@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>reeled-inn</title>
+		<link rel="stylesheet" href="stylesheets/style2.css" />
+	</head>
+	<body>
+		<div class="wrapper">
+			<div id="header">
+				<div>
+					<h1><a href="/" style="text-decoration: none; color: black">Reeled <span style="color: rgb(229, 134, 10)">Inn</span></a></h1>
+				</div>
+				<div>
+					<ul>
+						<li><a href="/register">Sign Up</a></li>
+						<li><a href="/login">Login</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="cols" id="movie-list">
+        <% movielist.forEach((movie) => { %>
+
+				<div class="col" ontouchstart="this.classList.toggle('hover');">
+					<div class="container">
+						<div
+							class="front"
+							style="
+								background-image: url(<%= movie.image %>);
+							"
+						>
+							<div class="inner">
+								<p><%= movie.title %></p>
+								<span>Click to watch</span>
+							</div>
+						</div>
+						<div class="back">
+							<div class="inner">
+								<p>
+									<%= movie.description %>
+								</p>
+								<span
+									class="price"
+									style="color: rgb(229, 134, 10); margin-top: 10px"
+									>$<%= movie.price %></span
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<% }) %>
+			</div>
+            <div class="pagination">
+                <div class="pagination-container">
+                    <% if (currentPage > 1) { %>
+                      <button><a href="?page=<%= currentPage - 1 %>"><i class="fa fa-arrow-left" aria-hidden="true"></i> Prev</a> 
+                      </button>
+                    <% } %>
+                    <% for (let i = 1; i <= totalPages; i++) { %>
+                      <div <% if (i === currentPage) { %>class="active"<% } %> id="circle">
+                        <a href="?page=<%= i %>"><%= i %></a>
+                      </div>
+                    <% } %>
+                    <% if (currentPage < totalPages) { %>
+                      <button><a href="?page=<%= currentPage + 1 %>">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                      </button>
+                    <% } %>
+                </div>
+              </div>           
+		</div>
+        <footer>
+          <p>This website was developed by ReeledInn Movies &copy; 2023. All rights reserved</p>
+      </footer>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.6.0/pagination.min.js" integrity="sha512-GzbaI5EsNzdEUq6/2XLYpr1y9CUZRIVsUeWTAFgULtQa5jZ3Nug8i0nZKM6jp9NffBCZhymPPQFcF0DK+JkRpw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="javascripts/script.js"></script>
+	</body>
+</html>

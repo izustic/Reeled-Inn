@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <link rel="stylesheet" href="/stylesheets/style3.css">
+</head>
+<body>
+    <div id="header">
+        <div><h1><a href="/">Reeled <span style="color: #fff">Inn</span></a></h1></div>
+      </div>
+    <div class="login-page">
+        <div class="form">
+          <form class="register-form" method="POST" action="/users/register">
+            <!-- <% if(locals.error){ %>
+                <div style="color: #ff0099;
+                margin: 10px 2px;
+                font-size: 0.8em;
+                font-weight: bold;
+                "><%= error %></div>
+            <% } %> -->
+            <div>
+                <% if(locals.error){ %>
+                    <% if(error === 'fullname is not allowed to be empty'){ %>
+
+                    <div style="
+                    color: #ff0099;
+                    margin: 10px 2px;
+                    font-size: 0.8em;
+                    font-weight: bold;
+                    ">Name is not allowed to be empty</div>
+                   <% } %>
+
+                <% } %>
+                <input type="text" placeholder="full name" name="fullname"/>
+            </div>
+            <div>
+                <% if(locals.error){ %>
+                    <% if(error === 'username is not allowed to be empty'){ %>
+
+                    <div style="
+                    color: #ff0099;
+                    margin: 10px 2px;
+                    font-size: 0.8em;
+                    font-weight: bold;
+                    ">Username is not allowed to be empty</div>
+                   <% } %>
+
+                <% } %>
+                <input type="text" placeholder="username" name="username"/>
+            </div>
+            <div>
+                <% if (locals.error) { %>
+                    <% if (error === 'email is not allowed to be empty') { %>
+                
+                      <div style="
+                        color: #ff0099;
+                        margin: 10px 2px;
+                        font-size: 0.8em;
+                        font-weight: bold;
+                      "><%= error%></div>
+                
+                    <% } else if (error === 'email is already taken') { %>
+                
+                      <div style="
+                        color: #ff0099;
+                        margin: 10px 2px;
+                        font-size: 0.8em;
+                        font-weight: bold;
+                      ">Email is already taken, please change</div>
+                
+                    <% } %>
+                  <% } %>
+                <input type="text" placeholder="email address" name="email"/>
+            </div>
+            <div>
+                <% if(locals.error){ %>
+                    <% if(error === 'password is not allowed to be empty'){ %>
+
+                    <div style="
+                    color: #ff0099;
+                    margin: 10px 2px;
+                    font-size: 0.8em;
+                    font-weight: bold;
+                    "><%= error%></div>
+                   <% } %>
+
+                <% } %>
+                <input type="password" placeholder="password" name="password"/>
+            </div>
+            <div>
+                <% if(locals.error){ %>
+                    <% if(error === 'Passwords does not match'){ %>
+
+                    <div style="
+                    color: #ff0099;
+                    margin: 10px 2px;
+                    font-size: 0.8em;
+                    font-weight: bold;
+                    "><%= error%></div>
+                   <% } %>
+
+                <% } %>
+                <input type="password" placeholder="confirm password" name="confirm_password"/>
+            </div>
+            <button type="submit">create</button>
+            <p class="message">Already registered? <a href="/login">Sign In</a></p>
+          </form>
+        </div>
+      </div>
+    
+<!-- <script src="javascripts/script.js"></script> -->
+</body>
+</html>
